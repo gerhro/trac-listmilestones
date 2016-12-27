@@ -32,9 +32,15 @@ class ListMilestonesMacro(WikiMacroBase):
         content_type = 'text/html'
 
         dispatcher = RequestDispatcher(self.env)
-        template, data, content_type = dispatcher._post_process_request(req, template, data, content_type)
+        response = dispatcher._post_process_request(req, template, data, content_type)
 
-        return Markup(Chrome(self.env).render_template(formatter.req, template, data, content_type=content_type, fragment=True))
+        # API < 1.1.2 does not return a method.
+        if (len(response) == 3):
+            template, data, content_type = response
+            return Markup(Chrome(self.env).render_template(formatter.req, template, data, content_type=content_type, fragment=True))
+
+        template, data, content_type, method = response
+        return Markup(Chrome(self.env).render_template(formatter.req, template, data, content_type=content_type, fragment=True, method=method))
 
     def get_templates_dirs(self):
         from pkg_resources import resource_filename
