@@ -1,5 +1,6 @@
 from trac.wiki.macros import WikiMacroBase, parse_args
 from trac.ticket.model import Milestone
+from trac.ticket.roadmap import ITicketGroupStatsProvider, TicketGroupStats
 from trac.web.chrome import Chrome
 from trac.web.main import RequestDispatcher
 from trac.util.html import Markup
