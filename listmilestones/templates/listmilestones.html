@@ -1,10 +1,11 @@
 <div xmlns:py="http://genshi.edgewall.org/" xmlns:i18n="http://genshi.edgewall.org/i18n" py:strip="">
 <div class="milestones">
   <div py:for="idx, milestone in enumerate(milestones)" class="milestone">
-
-    <div class="info">
+  <div class="info trac-progress">
       <h3><a href="${href.milestone(milestone.name)}">
-        Milestone: <em>${milestone.name}</em>
+        # set name
+        <em>${milestone.name}</em>
+        Milestone: ${name}
       </a></h3>
       <py:choose>
         <p py:when="milestone.completed" class="date">
