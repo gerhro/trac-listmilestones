@@ -5,6 +5,7 @@ from trac.web.chrome import Chrome
 from trac.web.main import RequestDispatcher
 from trac.util.html import Markup
 from trac.web.chrome import ITemplateProvider
+from trac.wiki.intertrac import *
 from trac.core import *
 
 class ListMilestonesMacro(WikiMacroBase):
